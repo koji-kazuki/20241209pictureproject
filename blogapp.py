@@ -7,7 +7,6 @@ app.config.from_pyfile('settings.py')
 
 @app.route('/')
 def index():
-
-
+    
     return render_template('index.html')
 
