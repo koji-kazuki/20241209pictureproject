@@ -1,1 +1,1 @@
-import apps.pictapp.models
+import pictapp.models

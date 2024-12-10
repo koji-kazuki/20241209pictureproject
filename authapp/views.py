@@ -19,9 +19,9 @@ authapp = Blueprint(
 from flask import render_template, url_for, redirect, flash
 from flask_login import login_user
 from sqlalchemy import select
-from apps.authapp import forms # authapp/forms.py
-from apps import models # apps/models.py
-from apps.app import db # apps/blogapp.pyからdbをインポート
+from authapp import forms # authapp/forms.py
+import models # apps/models.py
+from app import db # apps/blogapp.pyからdbをインポート
 
 @authapp.route('/', methods=['GET', 'POST'])
 def index():
