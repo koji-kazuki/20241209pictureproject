@@ -1,0 +1,100 @@
+<!doctype html>
+<!-- 言語指定をjaに変更 -->
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.84.0">
+  <!-- タイトル変更 -->
+  <title>Log in</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+
+  <!-- Bootstrap core CSS -->
+  <!-- authapp.staticの「static_auth」フォルダーのCSSファイルを指定 -->
+  <link href="{{ url_for('authapp.static', filename='css/bootstrap.min.css') }}"
+        rel="stylesheet">
+
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  <!-- Custom styles for this template -->
+  <!-- authapp.staticの「static_auth」フォルダーのCSSファイルを指定 -->
+  <link href="{{ url_for('authapp.static', filename='css/signin.css') }}" rel="stylesheet">
+</head>
+
+<body class="text-center">
+  <main class="form-signin">
+    <!-- フォームを配置
+    バリデーションはflask_wtfで行うので
+    novalidateを設定してHTMLのバリデーションを無効にする-->
+    <form action="{{url_for('authapp.index')}}"
+          method="POST"
+          novalidate="novalidate">
+      <!-- タイトル画像のリンク先を変更 -->
+      <img class="mb-4"
+            src="{{ url_for('authapp.static', filename='img/bootstrap-logo.svg') }}"
+            alt="" width="72" height="57">
+      <!-- タイトル -->
+      <h1 class="h3 mb-3 fw-normal">Please log in</h1>
+      <!-- 認証に失敗したときのメッセージを出力 -->
+      {% for message in get_flashed_messages() %}
+      <p style="color:red">{{ message }}</p>
+      <br>
+      {% endfor %}
+
+      <!-- メールアドレスのエラーメッセージを出力-->
+      {% for error in form.email.errors %}
+      <span style="color:red">{{ error }}</span>
+      <br>
+      {% endfor %}
+
+      <!-- パスワード未入力のエラーメッセージを出力-->
+      {% for error in form.password.errors %}
+      <span style="color:red">{{ error }}</span>
+      <br>
+      {% endfor %}
+
+      <!-- CSRF対策機能を有効にする -->
+      {{form.csrf_token}}
+      <p>
+        <!-- emailに設定されているラベルを表示 -->
+        {{form.email.label}}
+        <!-- emailの入力欄を配置 -->
+        {{form.email(placeholder="メールアドレス")}}
+      </p>
+      <p>
+        <!-- passwordに設定されているラベルを表示 -->
+        {{form.password.label}}
+        <!-- passwordの入力欄を配置 -->
+        {{form.password(placeholder="パスワード")}}
+      </p>
+      <p>
+        <!-- 送信ボタンを配置 -->
+        {{form.submit()}}
+      </p>
+    </form>
+
+    <!-- アンカーテキストとリンク先を設定 -->
+    <a href="{{url_for('index')}}">Home</a>
+  </main>
+</body>
+
+</html>

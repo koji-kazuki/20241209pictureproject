@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ja"><!-- jaを設定 -->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.84.0">
+  <!-- ページタイトルはベーステンプレートの適用先で設定する -->
+  <title>{% block title %}{% endblock %}</title>
+
+    <!-- アイコンのリンク先をデフォルトのstaticフォルダー以下に設定 -->
+    <link rel="icon"
+          type="image/x-icon"
+          href="{{ url_for('static', filename='assets/favicon.ico') }}" />
+
+    <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
+        削除 -->
+
+    <!-- Bootstrap core CSS -->
+    <!-- authapp.staticの「static_auth」フォルダーのCSSファイルを指定 -->
+    <link href="{{ url_for('authapp.static', filename='css/bootstrap.min.css') }}"
+          rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+</head>
+
+<body>
+  <!--  ページのヘッダ ー-->
+  <header>
+    <!-- ナビゲーションバーのヘッダー -->
+    <div class="collapse bg-dark" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-md-7 py-4">
+            <!-- タイトルと本文 -->
+            <h4 class="text-white">お気に入りの画像を投稿しよう!</h4>
+            <p class="text-muted">
+              お気に入りの画像にコメントを付けて投稿しましょう。
+              自作の画像で公序良俗に反しないものであれば何でもオッケーです!
+              タイトルとコメントをお忘れなく。
+              お気に入りの画像をみんなで楽しみましょう!
+            </p>
+          </div>
+          <div class="col-sm-4 offset-md-1 py-4">
+            <!-- ナビゲーションメニューのタイトル -->
+            <!-- ログイン中であるかをチェックする -->
+            {% if current_user.is_authenticated %}
+            <h4 class="text-white">
+              <!-- current_user.usernameでログイン中のユーザー名を取得 -->
+              <span>{{ current_user.username }}</span>さん、ようこそ！
+            </h4>
+            {% endif %}
+            <!-- ナビゲーションメニュー -->
+            <ul class="list-unstyled">
+              <!-- uploadビューへのリンクを設定 -->
+              <li><a href="{{ url_for('pictapp.upload') }}"
+                      class="text-white">投稿する</a></li>
+              <!-- マイページへのリンク
+                    user_id=current_user.idで「ユーザーのid」を引き渡す-->
+              <li><a href="{{url_for('pictapp.mypage', user_id=current_user.id)}}"
+                      class="text-white">マイページ</a></li>
+              <!-- ログアウトの処理はlogoutビューで行う -->
+              <li><a href="{{url_for('pictapp.logout')}}"
+                      class="text-white">ログアウト</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ナビゲーションバー本体 -->
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container">
+        <!-- トップページへのリンクを設定 -->
+        <a href="{{ url_for('pictapp.index') }}"
+            class="navbar-brand d-flex align-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                fill="none" stroke="currentColor" stroke-linecap="round"
+                stroke-linejoin="round" stroke-width="2" aria-hidden="true"
+                class="me-2" viewBox="0 0 24 24">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+            <circle cx="12" cy="13" r="4" />
+          </svg>
+          <!-- リンクテキスト -->
+          <strong>Picture Gallery</strong>
+        </a>
+        <!-- トグルボタン -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarHeader" aria-controls="navbarHeader"
+                aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- メインコンテンツ -->
+  <main>
+    <!-- メインコンテンツの要素をすべて削除 -->
+    <!-- メインコンテンツは各ページのテンプレートで設定する -->
+    {% block contents %}{% endblock %}
+  </main>
+
+  <!-- フッター -->
+  <footer class="text-muted py-5">
+    <div class="container">
+      <p class="float-end mb-1">
+        <a href="#">Back to top</a>
+      </p>
+      <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+      <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our
+        <a href="../getting-started/introduction/">getting started guide</a>.</p>
+    </div>
+  </footer>
+
+  <!-- jsのリンク先をpictapp.staticのjs/bootstrap.bundle.min.jsに変更 -->
+  <script
+    src="{{url_for('pictapp.static', filename='js/bootstrap.bundle.min.js')}}"></script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!-- ベーステンプレートを適用する-->
+{% extends 'base.html' %}
+
+<!-- ヘッダー情報のページタイトルは
+    ベーステンプレートを利用するページで設定する -->
+{% block title %}MyPage{% endblock %}
+
+<!-- メインコンテンツを設定する<div>～</div>をテンプレートタグで囲む-->
+{% block contents %}
+<!-- メインコンテンツ -->
+<div class="album py-5 bg-light">
+  <!-- Bootstrapのグリッドシステム -->
+  <div class="container">
+    <!-- 行要素を配置 -->
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <!-- 列要素を配置 -->
+      <div class="col">
+        <h2>投稿記事の削除</h2>
+        <p>
+          削除する記事の［削除］をクリックしてください。
+        </p>
+        <!-- pictappのトップページへのリンク -->
+        <a href="{{ url_for('pictapp.index') }}">画像一覧へ戻る</a>
+        <br><br>
+        <!-- テーブルを配置 -->
+        <table>
+          <tr>
+            <th>削除</th>
+            <th>タイトル</th>
+            <th>投稿日時</th>
+          </tr>
+          <!-- レコードを1件ずつ取り出す -->
+          {% for entry in mylist %}
+          <tr>
+            <td>
+              <!-- deleteビューへのリンク
+                  id=entry.idで「処理中のレコードのid」を引き渡す -->
+              <a href="{{ url_for('pictapp.delete', id=entry.id )}}">削除</a>
+            </td>
+            <!-- タイトルを表示 -->
+            <td>{{entry.title}}</td>
+            <!-- 投稿日時を表示 -->
+            <td>{{entry.create_at}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+
+        <!-- 列要素以下のタグまで -->
+      </div>
+      <!-- 行要素以下のタグまで -->
+    </div>
+    <!-- グリッドシステム以下のタグまで -->
+  </div>
+</div>
+<!-- メインコンテンツを設定する<div>～</div>をテンプレートタグで囲む-->
+{% endblock %}

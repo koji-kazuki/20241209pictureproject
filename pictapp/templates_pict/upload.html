@@ -1,0 +1,76 @@
+<!-- ベーステンプレートを適用する-->
+{% extends 'base.html' %}
+
+<!-- ヘッダー情報のページタイトルは
+    ベーステンプレートを利用するページで設定する -->
+{% block title %}Upload{% endblock %}
+
+<!-- メインコンテンツをテンプレートタグで囲む-->
+{% block contents %}
+<!-- メインコンテンツ -->
+<!-- Bootstrapのグリッドシステム -->
+<br>
+<div class="container">
+    <!-- 行を配置 -->
+    <div class="row">
+        <!-- 列の左右に余白offset-2を入れる -->
+        <div class="col offset-2">
+
+            <h2>画像のアップロード</h2>
+            <p>
+                タイトルと本文を入力、画像を選択して［アップロード］をクリックしてください。
+            </p>
+            <br>
+            <!-- フォームを配置
+                ファイルをアップロードする場合はenctype="multipart/form-data"が必要 -->
+            <form
+                action="{{url_for('pictapp.upload')}}"
+                method="POST"
+                enctype="multipart/form-data"
+                novalidate="novalidate">
+                <!-- CSRF対策機能を有効にする -->
+                {{form.csrf_token}}
+                <p>
+                    <!-- titleに設定されているラベルを表示 -->
+                    {{form.title.label}}
+                    <!-- titleの入力欄を配置 -->
+                    {{form.title(placeholder="タイトル")}}
+                    <!-- バリデーションにおけるエラーメッセージを抽出、出力-->
+                    {% for error in form.title.errors %}
+                    <span style="color:red">{{ error }}</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    <!-- messageに設定されているラベルを表示 -->
+                    {{form.message.label}}
+                    <!-- messageの入力欄を配置 -->
+                    {{form.message(placeholder="メッセージ")}}
+                    <!-- バリデーションにおけるエラーメッセージを抽出、出力-->
+                    {% for error in form.message.errors %}
+                    <span style="color:red">{{ error }}</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    <!-- 画像ファイルの選択 -->
+                    {{ form.image() }}
+                    <!-- バリデーションにおけるエラーメッセージを抽出、出力-->
+                    {% for error in form.image.errors %}
+                    <span style="color:red">{{ error }}</span>
+                    {% endfor %}
+                </p>
+
+                <!-- Divider-->
+                <hr>
+                <p>
+                    <!-- 送信ボタンを配置 -->
+                    {{form.submit()}}
+                </p>
+            </form>
+            <!-- ログイン後のトップページへのリンク -->
+            <a href="{{ url_for('pictapp.index') }}">投稿をやめる</a>
+        </div>
+    </div>
+</div>
+
+<!-- メインコンテンツをテンプレートタグで囲む-->
+{% endblock %}

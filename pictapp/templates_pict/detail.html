@@ -1,0 +1,37 @@
+<!-- ベーステンプレートを適用する-->
+{% extends 'base.html' %}
+
+<!-- ヘッダー情報のページタイトルは
+    ベーステンプレートを利用するページで設定する -->
+{% block title %}Detail{% endblock %}
+
+<!-- メインコンテンツをテンプレートタグで囲む-->
+{% block contents %}
+<!-- メインコンテンツ -->
+<div class="album py-5 bg-light">
+    <!-- Bootstrapのグリッドシステム -->
+    <div class="container">
+        <!-- 行要素を配置 -->
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div>
+                <!-- タイトル -->
+                <h3>{{detail.title}}</h3>
+                <!-- メッセージ -->
+                <h4>{{detail.contents}}</h4>
+                <!-- entry.image_pathを引数にしてpictapp.image_fileを呼び出して
+                    imagesフォルダー内の画像ファイルのパスを取得-->
+                <img
+                    src="{{ url_for('pictapp.image_file', filename=detail.image_path) }}"
+                    alt="画像" />
+            </div>
+            <!-- 行要素以下のタグまで -->
+        </div>
+        <!-- 投稿日時を表示 -->
+        <p>create_at: {{detail.create_at}}</p>
+        <!-- pictappのトップページへのリンク -->
+        <a href="{{ url_for('pictapp.index') }}">画像一覧へ戻る</a>
+        <!-- グリッドシステム以下のタグまで -->
+    </div>
+</div>
+<!-- メインコンテンツを設定する<div>～</div>をテンプレートタグで囲む-->
+{% endblock %}
