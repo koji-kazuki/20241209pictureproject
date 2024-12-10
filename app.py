@@ -39,8 +39,8 @@ login_manager.init_app(app)
 """トップページのルーティング
 """
 from flask import render_template, url_for, redirect, flash
-from apps import models # apps/models.pyをインポート
-from apps import forms  # apps/forms.pyをインポート
+import models # apps/models.pyをインポート
+import forms  # apps/forms.pyをインポート
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -82,7 +82,7 @@ def index():
 """ブループリントauthappの登録
 """
 # authappのモジュールviews.pyからBlueprint「authapp」ををインポート
-from apps.authapp.views import authapp
+from authapp.views import authapp
 
 # Flaskオブジェクトにブループリント「authapp」を登録
 # URLのプレフィクスを/authにする
@@ -91,7 +91,7 @@ app.register_blueprint(authapp, url_prefix='/auth')
 """ブループリントpictappの登録
 """
 # pictappのモジュールviews.pyからBlueprint「pictapp」ををインポート
-from apps.pictapp.views import pictapp
+from pictapp.views import pictapp
 
 # FlaskオブジェクトにBlueprint「pictapp」を登録
 # URLのプレフィクスを/pictureにする

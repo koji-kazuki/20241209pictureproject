@@ -1,6 +1,6 @@
 from datetime import datetime
 # app.pyのdbオブジェクト
-from apps.app import db
+from app import db
 
 class UserPicture(db.Model):
     """picturesテーブルのモデルクラス

@@ -4,7 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 # flask_loginからUserMixinクラスをインポート
 from flask_login import UserMixin
 # app.pyのdbオブジェクト、login_managerオブジェクト
-from apps.app import db, login_manager
+from app import db, login_manager
 
 class User(db.Model, UserMixin):
     """モデルクラス

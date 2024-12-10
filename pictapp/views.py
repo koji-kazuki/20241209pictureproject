@@ -79,9 +79,9 @@ from pathlib import Path # pathlibのPath
 from flask_login import current_user # current_user
 from flask import current_app # current_app
 
-from apps.app import db # apps.pyのSQLAlchemyインスタンスapp
-from apps.pictapp import forms # pictapp.formsモジュール
-from apps.pictapp import models as modelpict # pictapp.modelsモジュール
+from app import db # apps.pyのSQLAlchemyインスタンスapp
+from pictapp import forms # pictapp.formsモジュール
+from pictapp import models as modelpict # pictapp.modelsモジュール
 
 @pictapp.route('/upload', methods=['GET', 'POST'])
 @login_required
