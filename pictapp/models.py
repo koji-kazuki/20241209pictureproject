@@ -18,7 +18,7 @@ class UserPicture(db.Model):
     
     # user_idはusersテーブルのidカラムを外部キーとして設定
     user_id = db.Column(
-        db.String,          # String型
+        db.Integer,          # String型
         db.ForeignKey('users.id'))
     
     # ユーザー名用のフィールド
