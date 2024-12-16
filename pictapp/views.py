@@ -57,8 +57,8 @@ from pathlib import Path # pathlibのPath
 def image_file(filename):
     # imagesフォルダーのパスに<path:filename>で取得した
     # ファイル名filenameを連結して返す
-    return send_from_directory(Path(
-        current_app.config['UPLOAD_FOLDER'], filename))
+    return send_from_directory(
+        current_app.config['UPLOAD_FOLDER'], filename)
 
 """ログアウトのルーティングとビューの定義
 """
