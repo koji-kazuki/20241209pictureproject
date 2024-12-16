@@ -51,13 +51,14 @@ def index():
 """
 from flask import send_from_directory # send_from_directory
 from flask import current_app # current_app
+from pathlib import Path # pathlibのPath
 
 @pictapp.route('/images/<path:filename>')
 def image_file(filename):
     # imagesフォルダーのパスに<path:filename>で取得した
     # ファイル名filenameを連結して返す
-    return send_from_directory(
-        current_app.config['UPLOAD_FOLDER'], filename)
+    return send_from_directory(Path(
+        current_app.config['UPLOAD_FOLDER'], filename))
 
 """ログアウトのルーティングとビューの定義
 """
