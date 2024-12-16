@@ -13,14 +13,14 @@
     <!-- アイコンのリンク先をデフォルトのstaticフォルダー以下に設定 -->
     <link rel="icon"
           type="image/x-icon"
-          href="{{ url_for('static', filename='assets/favicon.ico') }}" />
+          href="{{url_for('static', filename='assets/favicon.ico')}}" />
 
     <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
         削除 -->
 
     <!-- Bootstrap core CSS -->
     <!-- authapp.staticの「static_auth」フォルダーのCSSファイルを指定 -->
-    <link href="{{ url_for('authapp.static', filename='css/bootstrap.min.css') }}"
+    <link href="{{url_for('authapp.static', filename='css/bootstrap.min.css')}}"
           rel="stylesheet">
 
     <style>
@@ -69,7 +69,7 @@
             <!-- ナビゲーションメニュー -->
             <ul class="list-unstyled">
               <!-- uploadビューへのリンクを設定 -->
-              <li><a href="{{ url_for('pictapp.upload') }}"
+              <li><a href="{{url_for('pictapp.upload')}}"
                       class="text-white">投稿する</a></li>
               <!-- マイページへのリンク
                     user_id=current_user.idで「ユーザーのid」を引き渡す-->
@@ -87,7 +87,7 @@
     <div class="navbar navbar-dark bg-dark shadow-sm">
       <div class="container">
         <!-- トップページへのリンクを設定 -->
-        <a href="{{ url_for('pictapp.index') }}"
+        <a href="{{url_for('pictapp.index')}}"
             class="navbar-brand d-flex align-items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                 fill="none" stroke="currentColor" stroke-linecap="round"

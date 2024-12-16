@@ -20,7 +20,7 @@
           削除する記事の［削除］をクリックしてください。
         </p>
         <!-- pictappのトップページへのリンク -->
-        <a href="{{ url_for('pictapp.index') }}">画像一覧へ戻る</a>
+        <a href="{{url_for('pictapp.index')}}">画像一覧へ戻る</a>
         <br><br>
         <!-- テーブルを配置 -->
         <table>
@@ -35,7 +35,7 @@
             <td>
               <!-- deleteビューへのリンク
                   id=entry.idで「処理中のレコードのid」を引き渡す -->
-              <a href="{{ url_for('pictapp.delete', id=entry.id )}}">削除</a>
+              <a href="{{url_for('pictapp.delete', id=entry.id)}}">削除</a>
             </td>
             <!-- タイトルを表示 -->
             <td>{{entry.title}}</td>

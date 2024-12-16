@@ -21,7 +21,7 @@
                 <!-- entry.image_pathを引数にしてpictapp.image_fileを呼び出して
                     imagesフォルダー内の画像ファイルのパスを取得-->
                 <img
-                    src="{{ url_for('pictapp.image_file', filename=detail.image_path) }}"
+                    src="{{url_for('pictapp.image_file', filename=detail.image_path)}}"
                     alt="画像" />
             </div>
             <!-- 行要素以下のタグまで -->
@@ -29,7 +29,7 @@
         <!-- 投稿日時を表示 -->
         <p>create_at: {{detail.create_at}}</p>
         <!-- pictappのトップページへのリンク -->
-        <a href="{{ url_for('pictapp.index') }}">画像一覧へ戻る</a>
+        <a href="{{url_for('pictapp.index')}}">画像一覧へ戻る</a>
         <!-- グリッドシステム以下のタグまで -->
     </div>
 </div>

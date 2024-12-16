@@ -15,7 +15,7 @@
 
   <!-- Bootstrap core CSS -->
   <!-- authapp.staticの「static_auth」フォルダーのCSSファイルを指定 -->
-  <link href="{{ url_for('authapp.static', filename='css/bootstrap.min.css') }}"
+  <link href="{{url_for('authapp.static', filename='css/bootstrap.min.css')}}"
         rel="stylesheet">
 
 
@@ -37,7 +37,7 @@
 
   <!-- Custom styles for this template -->
   <!-- authapp.staticの「static_auth」フォルダーのCSSファイルを指定 -->
-  <link href="{{ url_for('authapp.static', filename='css/signin.css') }}" rel="stylesheet">
+  <link href="{{url_for('authapp.static', filename='css/signin.css')}}" rel="stylesheet">
 </head>
 
 <body class="text-center">
@@ -50,7 +50,7 @@
           novalidate="novalidate">
       <!-- タイトル画像のリンク先を変更 -->
       <img class="mb-4"
-            src="{{ url_for('authapp.static', filename='img/bootstrap-logo.svg') }}"
+            src="{{url_for('authapp.static', filename='img/bootstrap-logo.svg')}}"
             alt="" width="72" height="57">
       <!-- タイトル -->
       <h1 class="h3 mb-3 fw-normal">Please log in</h1>
