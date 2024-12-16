@@ -50,6 +50,7 @@ def index():
 """imagesフォルダー内の画像ファイルのパスを返す機能
 """
 from flask import send_from_directory # send_from_directory
+from flask import current_app # current_app
 
 @pictapp.route('/images/<path:filename>')
 def image_file(filename):
