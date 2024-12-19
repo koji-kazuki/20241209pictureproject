@@ -12,7 +12,6 @@ pictapp = Blueprint(
     template_folder='templates_pict',
     static_folder='static_pict',
     )
-
 """pictappのトップページのルーティングとビューの定義
 """
 from flask import render_template
