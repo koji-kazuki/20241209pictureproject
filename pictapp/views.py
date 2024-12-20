@@ -99,7 +99,7 @@ def upload():
         # uuid4()でランダムな識別子を生成して画像ファイルの拡張子を連結する
         imagefile_uuid = str(uuid.uuid4()) + suffix
         # imagesフォルダーのパスにimagefile_uuidを連結してパスを作る
-        image_path = os.path.join(
+        image_path = Path(
             current_app.config['UPLOAD_FOLDER'], imagefile_uuid)
         # 画像データをファイル名をimage_pathにして保存
         file.save(image_path)
