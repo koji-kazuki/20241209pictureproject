@@ -11,5 +11,5 @@ SECRET_KEY = os.urandom(10)
 from pathlib import Path
 # basedirにapps、imagesを連結してPathオブジェクトを生成し、
 # str()で文字列に変換
-UPLOAD_FOLDER = os.path.join(basedir,'images')
+UPLOAD_FOLDER = 'images'
 
