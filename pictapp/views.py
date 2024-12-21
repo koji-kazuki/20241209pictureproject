@@ -51,14 +51,14 @@ def index():
 from flask import send_from_directory # send_from_directory
 from flask import current_app # current_app
 from pathlib import Path # pathlibのPath
-from app import app
+
 
 @pictapp.route('/images/<path:filename>')
 def image_file(filename):
     # imagesフォルダーのパスに<path:filename>で取得した
     # ファイル名filenameを連結して返す
     return send_from_directory(
-        app.config['UPLOAD_FOLDER'], filename)
+        current_app.config['UPLOAD_FOLDER'], filename)
 
 """ログアウトのルーティングとビューの定義
 """
@@ -85,7 +85,6 @@ from app import db # apps.pyのSQLAlchemyインスタンスapp
 from pictapp import forms # pictapp.formsモジュール
 from pictapp import models as modelpict # pictapp.modelsモジュール
 import os
-from app import app
 
 @pictapp.route('/upload', methods=['GET', 'POST'])
 @login_required
@@ -101,7 +100,7 @@ def upload():
         # uuid4()でランダムな識別子を生成して画像ファイルの拡張子を連結する
         imagefile_uuid = str(uuid.uuid4()) + suffix
         # imagesフォルダーのパスにimagefile_uuidを連結してパスを作る
-        image_path = os.path.join(app.config['UPLOAD_FOLDER'], imagefile_uuid)
+        image_path = Path(current_app.config['UPLOAD_FOLDER'], imagefile_uuid)
         # 画像データをファイル名をimage_pathにして保存
         file.save(image_path)
 
