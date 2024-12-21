@@ -4,7 +4,7 @@
 from flask import Flask
 
 # Flaskのインスタンスを生成
-app = Flask(__name__)
+app = Flask(__name__,static_folder='static')
 # 設定ファイルを読み込む
 app.config.from_pyfile('settings.py')
 
