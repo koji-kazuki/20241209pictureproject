@@ -51,7 +51,7 @@ def index():
 from flask import send_from_directory # send_from_directory
 from flask import current_app # current_app
 from pathlib import Path # pathlibのPath
-import app
+from app import app
 
 @pictapp.route('/images/<path:filename>')
 def image_file(filename):
@@ -85,7 +85,7 @@ from app import db # apps.pyのSQLAlchemyインスタンスapp
 from pictapp import forms # pictapp.formsモジュール
 from pictapp import models as modelpict # pictapp.modelsモジュール
 import os
-import app
+from app import app
 
 @pictapp.route('/upload', methods=['GET', 'POST'])
 @login_required
