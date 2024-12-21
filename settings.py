@@ -12,5 +12,5 @@ SECRET_KEY = os.urandom(10)
 
 # basedirにapps、imagesを連結してPathオブジェクトを生成し、
 # str()で文字列に変換
-UPLOAD_FOLDER = str(Path(basedir,'images'))
+UPLOAD_FOLDER = str(Path(basedir,'static','images'))
 
