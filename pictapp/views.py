@@ -85,7 +85,6 @@ from app import db # apps.pyのSQLAlchemyインスタンスapp
 from pictapp import forms # pictapp.formsモジュール
 from pictapp import models as modelpict # pictapp.modelsモジュール
 import os
-from app import app
 
 @pictapp.route('/upload', methods=['GET', 'POST'])
 @login_required
@@ -101,7 +100,7 @@ def upload():
         # uuid4()でランダムな識別子を生成して画像ファイルの拡張子を連結する
         imagefile_uuid = str(uuid.uuid4()) + suffix
         # imagesフォルダーのパスにimagefile_uuidを連結してパスを作る
-        image_path = os.path.join(app.root_path,app.config['UPLOAD_FOLDER'], imagefile_uuid)
+        image_path = Path(current_app.config['UPLOAD_FOLDER'], imagefile_uuid)
         # 画像データをファイル名をimage_pathにして保存
         file.save(image_path)
 
